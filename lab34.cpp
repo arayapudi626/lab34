@@ -42,10 +42,27 @@ void DFS(int src){
 }
 void BFS(int src){
     vector<bool> visited(SIZE, false);
+    vector<int> res;
     queue<int> q;
     visited[src] = true;
      q.push(src);
     
+     cout << "BFS starting" << src << ":\n";
+     while(!q.empty()){
+        int curr = q.front();
+        q.pop();
+        res.push_back(curr);
+        cout << curr << " ";
+
+        for (auto x : adjList[curr]){
+            if(!visited[x.first]){
+                visited[x.first] = true;
+                q.push(x.first);
+            }
+        }
+
+     }
+     cout << endl;
 }
 };
 
@@ -59,5 +76,6 @@ vector<Edge> edges = {
 Graph graph(edges);
 // Prints adjacency list representation of graph
 graph.printGraph();
+graph.BFS(0);
 return 0;
 }
