@@ -29,11 +29,13 @@ adjList[dest].push_back(make_pair(src, weight));
 }
 // Print the graph's adjacency list
 void printGraph() {
-cout << "Graph's adjacency list:" << endl;
+    vector<string> landmarks = {"ARC", "Brandy", "Anteatery", "DBH", "EH", "ELH", "Bio sci lib", "Starbucks"};
+cout << "UCI navigation system" << endl;
+cout << "==========================\n";
 for (int i = 0; i < adjList.size(); i++) {
-cout << i << " --> ";
+    cout << "Landmark" << i << " (" << landmarks[i] << ") close to:\n";
 for (Pair v : adjList[i])
-cout << "(" << v.first << ", " << v.second << ") ";
+cout << " -> Landmark " << v.first << " (" << landmarks[v.first] << ") - Travel Time: " << v.second << " mins\n ";
 cout << endl;
 }
 }
