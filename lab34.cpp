@@ -39,14 +39,15 @@ cout << endl;
 }
 void DFS(int src){
     vector<bool> visited(SIZE, false);
-    vector<int> res;
+    //vector<int> res;
     stack<int> s;
     s.push(src);
     cout << "DFS starting from vertex " << src << ":\n";
     while(!s.empty()){
         int curr = s.top();
         s.pop();
-        res.push_back(curr);
+        //res.push_back(curr);
+        visited[curr] = true;
         cout << curr << " ";
 
         for (auto x : adjList[curr]){
@@ -71,6 +72,7 @@ void BFS(int src){
      while(!q.empty()){
         int curr = q.front();
         q.pop();
+        visited[src] = true;
         res.push_back(curr);
         cout << curr << " ";
 
