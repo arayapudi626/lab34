@@ -1,12 +1,13 @@
 #include <iostream>
 #include <vector>
+#include <queue>
+#include <stack>
 using namespace std;
 const int SIZE = 7;
 struct Edge {
 int src, dest, weight;
 };
-typedef pair<int, int> Pair; // Creates alias 'Pair' for the pair<int,int> data
-type
+typedef pair<int, int> Pair; // Creates alias 'Pair' for the pair<int,int> data type
 class Graph {
 public:
 // a vector of vectors of Pairs to represent an adjacency list
@@ -36,7 +37,18 @@ cout << "(" << v.first << ", " << v.second << ") ";
 cout << endl;
 }
 }
+void DFS(int src){
+    
+}
+void BFS(int src){
+    vector<bool> visited(SIZE, false);
+    queue<int> q;
+    visited[src] = true;
+     q.push(src);
+    
+}
 };
+
 int main() {
 // Creates a vector of graph edges/weights
 vector<Edge> edges = {
@@ -48,3 +60,4 @@ Graph graph(edges);
 // Prints adjacency list representation of graph
 graph.printGraph();
 return 0;
+}
