@@ -36,7 +36,7 @@ void printGraph() {
 cout << "UCI navigation system" << endl;
 cout << "==========================\n";
 for (int i = 0; i < adjList.size(); i++) {
-    cout << "Landmark" << i << " (" << landmarks[i] << ") close to:\n";
+    cout << "Landmark " << i << " (" << landmarks[i] << ") close to:\n";
 for (Pair v : adjList[i])
 cout << " -> Landmark " << v.first << " (" << landmarks[v.first] << ") - Travel Time: " << v.second << " mins\n ";
 cout << endl;
@@ -47,6 +47,7 @@ void DFS(int src){
     //vector<int> res;
     stack<int> s;
     s.push(src);
+    visited[src] = true;
     cout << "DFS route starting from " << src << ":\n";
     while(!s.empty()){
         int curr = s.top();
@@ -96,7 +97,7 @@ int main() {
 // Creates a vector of graph edges/weights
 vector<Edge> edges = {
 // (x, y, w) —> edge from x to y having weight w
-{0,1,8},{0,2,21},{1,2,6},{1,3,5},{1,4,4},{2,7,11},{2,8,8},{3,4,9},{5,6,10},{5,7,15},{5,8,5},{6,7,3},{6,8,7}
+{0,1,5},{0,2,21},{1,2,6},{1,3,5},{1,4,4},{2,7,11},{2,7,7},{3,4,9},{5,6,10},{5,7,15},{5,7,5},{6,7,3}
 };
 // Creates graph
 Graph graph(edges);
