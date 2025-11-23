@@ -162,6 +162,19 @@ void shortestPath(int src){
 
 
     }
+    int menu(){
+    cout << "UCI Navigation Menu:\n";
+    cout << "[1] Display campus walking network\n";
+    cout << "[2] Explore layer-by-layer (BFS)\n";
+    cout << "[3] Explore deep route (DFS)\n";
+    cout << "[4] Show shortest travel times from landmark 0\n";
+    cout << "[5] Show minimum spanning walkway network\n";
+    cout << "[0] Exit\n";
+    cout << "Enter your choice: ";
+    int choice;
+    cin >> choice;
+    return choice;
+    }
 };
 
 int main() {
@@ -170,13 +183,40 @@ vector<Edge> edges = {
 // (x, y, w) —> edge from x to y having weight w
 {0,1,5},{0,2,21},{1,2,6},{1,3,5},{1,4,4},{2,7,11},{2,7,7},{3,4,9},{5,6,10},{5,7,15},{5,7,5},{6,7,3}
 };
+
 // Creates graph
 Graph graph(edges);
-// Prints adjacency list representation of graph
-graph.printGraph();
-graph.DFS(0);
-graph.BFS(0);
-graph.shortestPath(0);
-graph.tree(0);
+int choice = graph.menu();
+switch (choice) {
+        case 1:
+            graph.printGraph();
+            break;
+
+        case 2:
+            graph.BFS(0);
+            break;
+
+        case 3:
+            graph.DFS(0);
+            break;
+
+        case 4:
+            graph.shortestPath(0);
+            break;
+
+        case 5:
+            graph.tree(0);
+            break;
+
+        case 0:
+            cout << "Exit.\n";
+            break;
+
+        default:
+            cout << "Invalid choice. Try again.\n";
+        }
+
+
+
 return 0;
 }
