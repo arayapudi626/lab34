@@ -121,6 +121,9 @@ void shortestPath(int src){
             cout << dist[i] << "\n";
         }
     }
+    void tree(int src){
+        
+    }
 };
 
 int main() {
