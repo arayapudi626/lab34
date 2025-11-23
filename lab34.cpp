@@ -122,7 +122,37 @@ void shortestPath(int src){
         }
     }
     void tree(int src){
-        
+        const int MAX = numeric_limits<int>::max();
+        vector<int> key(SIZE, MAX);   
+        vector<int> parent(SIZE, -1);
+        vector<bool> MST(SIZE, false); 
+        key[0] = 0;
+
+        for (int count = 0; count < SIZE - 1; ++count) {
+            int u = -1;
+            int minKey = MAX;
+
+            for (int v = 0; v < SIZE; ++v) {
+                if (!MST[v] && key[v] < minKey) {
+                    minKey = key[v];
+                    u = v;
+                }
+            }
+
+            MST[u] = true;
+
+            for (auto &edge : adjList[u]) {
+                int v = edge.first;
+                int w = edge.second;
+
+                if (!MST[v] && w < key[v]) {
+                    key[v] = w;
+                    parent[v] = u;
+                }
+            }
+        }
+
+
     }
 };
 
@@ -139,5 +169,6 @@ graph.printGraph();
 graph.DFS(0);
 graph.BFS(0);
 graph.shortestPath(0);
+graph.tree(0);
 return 0;
 }
