@@ -151,6 +151,14 @@ void shortestPath(int src){
                 }
             }
         }
+                cout << "Minimum Spanning Tree edges:\n";
+        for (int v = 0; v < SIZE; ++v) {
+            if (parent[v] != -1) {
+                cout << "Edge from " << parent[v]
+                     << " to " << v
+                     << " with weight: " << key[v] << "\n";
+            }
+        }
 
 
     }
