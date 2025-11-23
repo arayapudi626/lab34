@@ -105,9 +105,22 @@ void shortestPath(int src){
         int u = pq.top().second;
         pq.pop();
         
-        f
+        for (auto edge : adjList[u]){
+            int v = edge.first;
+            int w = edge.second;
+
+            if (dist[u] != MAX && dist[u] + w < dist[v]){
+                dist[v] = dist[u] + w;
+                pq.push(make_pair(dist[v], v));
+            }
+        }
     }
-}
+    cout << "Shortest path from node " << src << ":\n";
+    for (int i = 0; i < SIZE; i++){
+        cout << src << " -> " << i << " : ";
+            cout << dist[i] << "\n";
+        }
+    }
 };
 
 int main() {
@@ -122,5 +135,6 @@ Graph graph(edges);
 graph.printGraph();
 graph.DFS(0);
 graph.BFS(0);
+graph.shortestPath(0);
 return 0;
 }
