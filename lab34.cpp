@@ -38,7 +38,27 @@ cout << endl;
 }
 }
 void DFS(int src){
-    
+    vector<bool> visited(SIZE, false);
+    vector<int> res;
+    stack<int> s;
+    s.push(src);
+    cout << "DFS starting from vertex " << src << ":\n";
+    while(!s.empty()){
+        int curr = s.top();
+        s.pop();
+        res.push_back(curr);
+        cout << curr << " ";
+
+        for (auto x : adjList[curr]){
+            if(!visited[x.first]){
+                visited[x.first] = true;
+                s.push(x.first);
+            }
+        }
+
+     }
+     cout << endl;
+
 }
 void BFS(int src){
     vector<bool> visited(SIZE, false);
@@ -47,7 +67,7 @@ void BFS(int src){
     visited[src] = true;
      q.push(src);
     
-     cout << "BFS starting" << src << ":\n";
+     cout << "BFS starting from vertex " << src << ":\n";
      while(!q.empty()){
         int curr = q.front();
         q.pop();
@@ -76,6 +96,7 @@ vector<Edge> edges = {
 Graph graph(edges);
 // Prints adjacency list representation of graph
 graph.printGraph();
+graph.DFS(0);
 graph.BFS(0);
 return 0;
 }
