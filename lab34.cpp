@@ -2,8 +2,10 @@
 #include <vector>
 #include <queue>
 #include <stack>
+#include <string>
+
 using namespace std;
-const int SIZE = 7;
+const int SIZE = 8;
 struct Edge {
 int src, dest, weight;
 };
@@ -12,6 +14,7 @@ class Graph {
 public:
 // a vector of vectors of Pairs to represent an adjacency list
 vector<vector<Pair>> adjList;
+vector<string> landmarks = {"ARC", "Brandy", "Anteatery", "DBH", "EH", "ELH", "Bio sci lib", "Starbucks"};
 // Graph Constructor
 Graph(vector<Edge> const &edges) {
 // resize the vector to hold SIZE elements of type vector<Edge>
@@ -29,7 +32,7 @@ adjList[dest].push_back(make_pair(src, weight));
 }
 // Print the graph's adjacency list
 void printGraph() {
-    vector<string> landmarks = {"ARC", "Brandy", "Anteatery", "DBH", "EH", "ELH", "Bio sci lib", "Starbucks"};
+   // vector<string> landmarks = {"ARC", "Brandy", "Anteatery", "DBH", "EH", "ELH", "Bio sci lib", "Starbucks"};
 cout << "UCI navigation system" << endl;
 cout << "==========================\n";
 for (int i = 0; i < adjList.size(); i++) {
@@ -44,7 +47,7 @@ void DFS(int src){
     //vector<int> res;
     stack<int> s;
     s.push(src);
-    cout << "DFS starting from vertex " << src << ":\n";
+    cout << "DFS route starting from " << src << ":\n";
     while(!s.empty()){
         int curr = s.top();
         s.pop();
@@ -70,7 +73,7 @@ void BFS(int src){
     visited[src] = true;
      q.push(src);
     
-     cout << "BFS starting from vertex " << src << ":\n";
+     cout << "BFS route starting from " << src << ":\n";
      while(!q.empty()){
         int curr = q.front();
         q.pop();
