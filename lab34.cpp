@@ -72,7 +72,6 @@ void BFS(int src){
      while(!q.empty()){
         int curr = q.front();
         q.pop();
-        //visited[src] = true;
         res.push_back(curr);
         cout << curr << " ";
 
