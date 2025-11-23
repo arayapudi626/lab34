@@ -3,6 +3,7 @@
 #include <queue>
 #include <stack>
 #include <string>
+#include <limits>
 
 using namespace std;
 const int SIZE = 8;
@@ -90,6 +91,22 @@ void BFS(int src){
 
      }
      cout << endl;
+}
+void shortestPath(int src){
+    int MAX = numeric_limits<int>::max();
+    vector<int> dist(SIZE, MAX);
+    dist[src] = 0;
+
+    priority_queue<Pair, vector<Pair>, greater<Pair>> pq;
+    pq.push(make_pair(0, src));
+
+    while (!pq.empty()){
+        int curr = pq.top().first;
+        int u = pq.top().second;
+        pq.pop();
+        
+        f
+    }
 }
 };
 
